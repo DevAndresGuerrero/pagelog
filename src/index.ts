@@ -1,8 +1,5 @@
 import path from 'path';
 import express from 'express';
-import Handlebars from 'handlebars';
-import { engine } from 'express-handlebars';
-import { allowInsecurePrototypeAccess } from '@handlebars/allow-prototype-access';
 
 // Importing routes
 import IndexRoutes from './routes/index';
@@ -15,15 +12,7 @@ import './database';
 // Settings
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
-app.engine('.hbs', engine({
-  extname: '.hbs',
-  defaultLayout: 'main',
-  layoutsDir: path.join(app.get('views'), 'layouts'),
-  partialsDir: path.join(app.get('views'), 'partials'),
-  handlebars: allowInsecurePrototypeAccess(Handlebars),
-  helpers: require('./lib/helpers'),
-}));
-app.set('view engine', '.hbs');
+app.set('view engine', 'pug');
 
 // Middlewares
 app.use(express.json());

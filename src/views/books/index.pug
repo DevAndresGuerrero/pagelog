@@ -1,0 +1,8 @@
+extends ../layouts/main.pug
+
+block content
+  h1 Lists of books
+  br
+  ul
+    each book, index in books
+      li Title: #{book.title} - Author: #{book.author} - ISBN: #{book.isbn}
