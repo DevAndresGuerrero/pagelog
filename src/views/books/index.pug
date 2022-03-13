@@ -1,8 +1,23 @@
 extends ../layouts/main.pug
 
 block content
-  h1 Lists of books
-  br
-  ul
-    each book, index in books
-      li Title: #{book.title} - Author: #{book.author} - ISBN: #{book.isbn}
+  .d-flex.justify-content-start.align-items-center.mb-4
+    h1 Lists of books
+    a(href='/books/add' class="btn btn-sm btn-primary ml-3") Add book
+  .table-responsive
+    table(class="table table-bordered table-striped table-sm" width="100%" cellspacing="0")
+      thead.bg-primary.text-light
+        tr
+          th Title
+          th Author
+          th ISBN
+          th Actions
+      tbody
+        each book in books
+          tr
+            td #{book.title}
+            td #{book.author}
+            td #{book.isbn}
+            td
+              a(href=`/books/edit/${book._id}` class="btn btn-warning btn-sm mr-1") Edit
+              a(href=`/books/delete/${book._id}` class="btn btn-danger btn-sm") Delete

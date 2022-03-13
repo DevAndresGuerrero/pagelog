@@ -1,0 +1,13 @@
+extends ../layouts/main.pug
+
+block content
+  .col-6.mx-auto
+    .card.card-body
+      form(action="/books/add", method="post")
+        .form-group
+          input(type="text", class="form-control", name="title", placeholder="Title", autofocus)
+        .form-group
+          input(type="text", class="form-control", name="author", placeholder="Author", required)
+        .form-group
+          input(type="text", class="form-control", name="isbn", placeholder="ISBN")
+        button(type="submit", class="btn btn-primary btn-block") Save

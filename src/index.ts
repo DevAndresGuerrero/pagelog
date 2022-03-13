@@ -4,6 +4,7 @@ import express from 'express';
 // Importing routes
 import IndexRoutes from './routes/index';
 import BooksRoutes from './routes/books';
+import PagesRoutes from './routes/pages';
 
 // Initializations
 const app = express();
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use('/', IndexRoutes);
 app.use('/books', BooksRoutes);
+app.use('/pages', PagesRoutes);
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
